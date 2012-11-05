@@ -1,0 +1,3 @@
+ColorProcessor = (algorithm) ->
+  process: ->
+    algorithm
