@@ -4,7 +4,7 @@ class Display
     @canvas = document.createElement('canvas')
     @canvas.width = @width
     @canvas.height = @height
-    @canvasContainer.appendChild(canvas)
+    @canvasContainer.appendChild(@canvas)
     @context = canvas.getContext('2d')
 
     @buildImageBuffers()
