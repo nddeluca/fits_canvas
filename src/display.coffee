@@ -1,6 +1,6 @@
 class Display
   constructor: (@container,@width,@height) ->
-    @canvasContainer = document.getElementById(@conainter)
+    @canvasContainer = document.getElementById(@containter)
     @canvas = document.createElement('canvas')
     @canvas.width = @width
     @canvas.height = @height
