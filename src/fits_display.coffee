@@ -21,6 +21,10 @@ class FitsDisplay extends Display
     @scaleRatio = @fitsWidth/scaledWidth
     scaledHeight = ~~(@fitsHeight/@scaleRatio)
     
+    #Build buffers for scaling and coloring
+    @buildScaleBuffers()
+    @buildColorBuffers()
+    
     #Call super to set up canvas and display buffers
     #This also sets @width and @height
     super container,scaledWidth,scaledHeight
@@ -33,7 +37,7 @@ class FitsDisplay extends Display
     @scaleView8 = new Uint8ClampedArray(@scaleBuffer)
 
   #Holds RGBA Array
-  buildColorBuffer: ->
+  buildColorBuffers: ->
     @colorBuffer = new ArrayBuffer(@fitsWidth*@fitsHeight*4)
     @colorView8 = new Uint8ClampledArray(@colorBuffer)
     @colorView32 = new Uint32Array(@colorBuffer)
