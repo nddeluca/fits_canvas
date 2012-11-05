@@ -1,1 +1,1 @@
-module.exports = require('./lib/fits_data_processor');
+module.exports = require('./lib/fits_canvas');
