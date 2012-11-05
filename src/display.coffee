@@ -11,7 +11,7 @@ class Display
     
   buildImageBuffers: ->
     @displayData = @context.createImageData(@width,@height)
-    @displayBuffer = new ArrayBuffer(@imageData.data.length)
+    @displayBuffer = new ArrayBuffer(@displayData.data.length)
     @displayView8 = new Uint8ClampedArray(@displayBuffer)
     @dispayView32 = new Uint32Array(@displayBuffer)
 
