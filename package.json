@@ -1,5 +1,5 @@
 {
-  "name": "fits_data_processor",
+  "name": "fits_canvas",
   "version": "0.0.1",
   "author": "Nicholas DeLuca <nickdeluca08@gmail.com>",
   "description": "Project to handle processing of fits data for viewing on html5 canvas",
