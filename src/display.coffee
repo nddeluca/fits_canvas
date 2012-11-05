@@ -5,15 +5,15 @@ class Display
     @canvas.width = @width
     @canvas.height = @height
     @canvasContainer.appendChild(@canvas)
-    @context = canvas.getContext('2d')
+    @context = @canvas.getContext('2d')
 
     @buildImageBuffers()
     
   buildImageBuffers: ->
     @displayData = @context.createImageData(@width,@height)
     @displayBuffer = new ArrayBuffer(@imageData.data.length)
-    @displayView8 = new Uint8ClampedArray(@buffer)
-    @dispayView32 = new Uint32Array(@buffer)
+    @displayView8 = new Uint8ClampedArray(@displayBuffer)
+    @dispayView32 = new Uint32Array(@displayBuffer)
 
   draw: ->
     @displayData.data.set(buffView8)
