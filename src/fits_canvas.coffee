@@ -7,3 +7,5 @@ FitsCanvas.ScaleProcessor = require('./scale_processor')
 FitsCanvas.FitsDisplay = require('./fits_display')
 FitsCanvas.ColorProcessor = require('./color_processor')
 
+module?.exports = FitsCanvas
+
