@@ -13,7 +13,7 @@ class Display
     @displayData = @context.createImageData(@width,@height)
     @displayBuffer = new ArrayBuffer(@displayData.data.length)
     @displayView8 = new Uint8ClampedArray(@displayBuffer)
-    @dispayView32 = new Uint32Array(@displayBuffer)
+    @displayView32 = new Uint32Array(@displayBuffer)
 
   draw: ->
     @displayData.data.set(@displayView8)
