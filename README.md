@@ -78,8 +78,10 @@ display.draw()
 ```
 In addition, custom functions can be written and used to scale or color the image.
 ```coffeescript
-display.scale = (fitsData, scaleData, fitsMin, fitsMax) ->
+myScale = (fitsData, scaleData, fitsMin, fitsMax) ->
   #Use own scaling method here
+  
+display.scale = myScale
 ```
 The fitsData parameter is the data from the fits file.  The scaleData parameter is the array being written to, 
 and is a Uint8ClampedArray in order to insure values bewteen 0 and 255.  The fitsMin parameter is the 
@@ -87,24 +89,27 @@ mininum value in the fitsData array, and the fitsMax parameter is the maxinum va
 
 Similary with color:
 ```coffeescript
-display.color = (scaleData, colorData) ->
+myColor = (scaleData, colorData) ->
   #Use own color method here
+
+display.color = myColor
 ```
 The scaleData is the data returned by the scaling method and is a Uint8ClampedArray with values from 0 to 255.
 The colorData is a Uint32Array where each RGBA pixel (8 bits each value) is represented in each array index.
 
 To get an idea of the usage, here is the linear and grayscale functions that are used by default.
 ```coffeescript
-linear: (fitsData, scaleData, min, max) ->
-  range = max - min
-  index = 0
-  for i in [0..(scaleData.length - 1)]
-    scaleData[i] = ~~(255*((fitsData[i] - min)/range))
-    
-grayscale: (scaleData,colorData) ->
-  for i in [0..(scaleData.length-1)]
-    value = scaleData[i]
-    colorData[i] = (255 << 24) | (value << 16) | (value << 8) | value
+scales = 
+  linear: (fitsData, scaleData, min, max) ->
+    range = max - min
+    for i in [0..(scaleData.length - 1)]
+      scaleData[i] = ~~(255*((fitsData[i] - min)/range))
+
+colors =
+  grayscale: (scaleData,colorData) ->
+    for i in [0..(scaleData.length-1)]
+      value = scaleData[i]
+      colorData[i] = (255 << 24) | (value << 16) | (value << 8) | value
 ```
 
 To Do
@@ -119,4 +124,5 @@ References
 https://github.com/astrojs/fitsjs  
 https://hacks.mozilla.org/2011/12/faster-canvas-pixel-manipulation-with-typed-arrays/  
 http://tech-algorithm.com/articles/nearest-neighbor-image-scaling/  
+http://coffeescriptcookbook.com/  
 
