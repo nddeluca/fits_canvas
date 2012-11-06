@@ -5,7 +5,7 @@ ScaleProcessor = require('./scale_processor')
 FITS = require('fits')
 
 class FitsDisplay extends Display
-  constructor: (container,color,scale,desiredWidth,fitsFile) ->
+  constructor: (container,desiredWidth,fitsFile) ->
     #Set up fits file and raw data
     fits = new FITS.File(fitsFile)
     image = fits.getDataUnit()
