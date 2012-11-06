@@ -45,12 +45,14 @@ class FitsDisplay extends Display
   buildScaleBuffers: ->
     @scaleBuffer = new ArrayBuffer(@fitsWidth*@fitsHeight)
     @scaleView8 = new Uint8ClampedArray(@scaleBuffer)
+    return
 
   #Holds RGBA Array
   buildColorBuffers: ->
     @colorBuffer = new ArrayBuffer(@fitsWidth*@fitsHeight*4)
     @colorView8 = new Uint8ClampedArray(@colorBuffer)
     @colorView32 = new Uint32Array(@colorBuffer)
+    return
   
   processImage: ->
     @scaler.process(@fitsData,@scaleView8,@fitsMin,@fitsMax)

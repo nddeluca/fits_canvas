@@ -13,9 +13,11 @@ class Display
     @displayBuffer = new ArrayBuffer(@displayData.data.length)
     @displayView8 = new Uint8ClampedArray(@displayBuffer)
     @displayView32 = new Uint32Array(@displayBuffer)
+    return
 
   draw: ->
     @displayData.data.set(@displayView8)
     @context.putImageData(@displayData,0,0)
+    return
 
 module?.exports = Display
