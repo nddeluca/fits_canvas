@@ -1,5 +1,5 @@
 ColorProcessor = (algorithm) ->
-  process: (scaledData,colorData,width,height) ->
-    algorithm(scaledData,colorData,width,height)
+  process: (scaleData,colorData) ->
+    algorithm(scaleData,colorData)
 
 module?.exports = ColorProcessor
