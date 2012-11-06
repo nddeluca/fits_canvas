@@ -6,7 +6,6 @@ class Display
     @canvas.height = @height
     @canvasContainer.appendChild(@canvas)
     @context = @canvas.getContext('2d')
-
     @buildImageBuffers()
     
   buildImageBuffers: ->
