@@ -80,4 +80,11 @@ grayscale: (scaleData,colorData) ->
     colorData[i] = (255 << 24) | (value << 16) | (value << 8) | value
 ```
 
+To DO
+---
+*Add class to display galaxy models
+*Add class to display residuals
+*Write tests and benchmark
+*Add processor endainness check (the grayscale algorithm currently only works on little-endian machines)
+
 

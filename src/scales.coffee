@@ -1,5 +1,5 @@
 scales =
-  linear: linear = (fitsData, scaleData, min, max) ->
+  linear: (fitsData, scaleData, min, max) ->
     range = max - min
     index = 0
     for i in [0..(scaleData.length - 1)]
