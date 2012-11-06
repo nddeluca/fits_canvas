@@ -1,5 +1,5 @@
-Scales =
-  linear = (fitsData, scaleData, min, max, width, height) ->
+scales =
+  linear: linear = (fitsData, scaleData, min, max, width, height) ->
     range = max - min
     index = 0
     for x in [0..(width-1)]
@@ -7,4 +7,4 @@ Scales =
         index = y*width+x
         scaleData[index] = ~~(255*((fitsData[index] - min)/range))
 
-module?.exports = Scales
+module?.exports = scales
