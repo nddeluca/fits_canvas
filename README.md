@@ -3,6 +3,25 @@ FitsCanvas
 
 Library to display fits files in the browser using astrojs/fitsjs and html5 canvas.
 
+Install
+---
+Add to package.json
+```coffeescript
+"dependencies": {
+  "fits_canvas": "git://github.com/nddeluca/fits_canvas.git"
+}
+```
+Add to slug.json
+```coffeescript
+"dependencies": [
+  "fits_canvas"
+]
+```
+Run
+```bash
+npm install
+```
+
 Simple Usage
 ---
 To display a fits file create a new FitsDisplay Object.  FitsDisplay takes a container id, width, and binary fits file.
@@ -23,6 +42,8 @@ The height is set by using the intial width to keep the same aspect ratio.
 
 Example of this usage:
 ```coffeescript
+FitsCanvas = require('fits_canvas')
+
 xhr = new XMLHttpRequest()
 xhr.open('GET', 'images/my_fits_file.fits')
 xhr.responseType = 'arraybuffer'  	
