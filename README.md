@@ -104,13 +104,16 @@ scales =
     range = max - min
     for i in [0..(scaleData.length - 1)]
       scaleData[i] = ~~(255*((fitsData[i] - min)/range))
+    return
 
 colors =
   grayscale: (scaleData,colorData) ->
     for i in [0..(scaleData.length-1)]
       value = scaleData[i]
       colorData[i] = (255 << 24) | (value << 16) | (value << 8) | value
+    return
 ```
+Note: It's important that these functions end with return.  Ended with a loop will negatively affect performance.
 
 To Do
 ---
