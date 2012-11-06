@@ -57,10 +57,10 @@ class FitsDisplay extends Display
     @colorer.process(@scaleView8,@colorView32)
     for x in [0..(@width-1)]
       for y in [0..(@height)-1]
-        orig_x = ~~(x*@scaleRatio)
-        orig_y = ~~(y*@scaleRatio)
-        orig_index = ((@fitsHeight-1)-orig_y)*@fitsWidth + orig_x
-        #@displayView32[(@width*y)+x] = @colorView32[((@fitsHeight-1)-(~~(y*@scaleRatio)))*@fitsWidth+(~~(x*@scaleRatio))]
-        @displayView32[(@width*y)+x] = @colorView32[orig_index]
+        #orig_x = ~~(x*@scaleRatio)
+        #orig_y = ~~(y*@scaleRatio)
+        #orig_index = ((@fitsHeight-1)-orig_y)*@fitsWidth + orig_x
+        @displayView32[(@width*y)+x] = @colorView32[((@fitsHeight-1)-(~~(y*@scaleRatio)))*@fitsWidth+(~~(x*@scaleRatio))]
+        #@displayView32[(@width*y)+x] = @colorView32[orig_index]
 
 module?.exports = FitsDisplay
