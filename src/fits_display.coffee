@@ -57,9 +57,14 @@ class FitsDisplay extends Display
   processImage: ->
     @scaler.process(@fitsData,@scaleView8,@fitsMin,@fitsMax)
     @colorer.process(@scaleView8,@colorView32)
+
+    invertCoeff = (@fitsHeight - 1)*@fitsWidth
+    yScaleCoeff = @scaleRatio*@fitsWidth
+
     for x in [0..(@width-1)]
-      for y in [0..(@height)-1]
-        @displayView32[(@width*y)+x] = @colorView32[((@fitsHeight-1)-(~~(y*@scaleRatio)))*@fitsWidth+(~~(x*@scaleRatio))]
+      x_orig = ~~(x*@scaleRatio)
+      for y in [0..(@height-1)]
+        @displayView32[(@width*y)+x] = @colorView32[(inverCoeff-(~~(y*yScaleCoeff))) + x_orig]
     return
 
 module?.exports = FitsDisplay
