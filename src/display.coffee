@@ -16,7 +16,7 @@ class Display
     @dispayView32 = new Uint32Array(@displayBuffer)
 
   draw: ->
-    @displayData.data.set(buffView8)
+    @displayData.data.set(@displayView8)
     @context.putImageData(@displayData,0,0)
 
 module?.exports = Display
