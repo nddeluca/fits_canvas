@@ -1,5 +1,5 @@
 Display = require('./display')
-Scales = require('./scales')
+scales = require('./scales')
 ScaleProcessor = require('./scale_processor')
 
 FITS = require('fits')
@@ -25,6 +25,9 @@ class FitsDisplay extends Display
     @buildScaleBuffers()
     @buildColorBuffers()
     
+    #Set default scale
+    @scale = scales.linear
+
     #Call super to set up canvas and display buffers
     #This also sets @width and @height
     super container,scaledWidth,scaledHeight
@@ -43,7 +46,7 @@ class FitsDisplay extends Display
     @colorView32 = new Uint32Array(@colorBuffer)
   
   processImage: ->
-    scaler = new ScaleProcessor(Scales.linear)
+    scaler = new ScaleProcessor(@scale)
     scaler.process(@fitsData,@scaleView8,@fitsMin,@fitsMax,@fitsWidth,@fitsHeight)
     console.log @scaleView8
 
