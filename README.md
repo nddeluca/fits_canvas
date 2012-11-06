@@ -1,4 +1,7 @@
-fits_data_processor
+FitsCanvas
 ===================
 
-Provides several methods to process fits data arrays obtained using astrojs/fitsjs for viewing on a HTML5 canvas.
+Library to display fits files in the browser using astrojs/fitsjs and html5 canvas.
+
+Simple Usage
+---
