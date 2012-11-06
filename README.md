@@ -65,3 +65,19 @@ display.color = (scaleData, colorData) ->
 ```
 The scaleData is the data returned by the scaling method and is a Uint8ClampedArray with values from 0 to 255.
 The colorData is a Uint32Array where each RGBA pixel (8 bits each value) is represented in each array index.
+
+To get an idea of the usage, here is the linear and grayscale functions that are used by default.
+```coffeescript
+linear: (fitsData, scaleData, min, max) ->
+  range = max - min
+  index = 0
+  for i in [0..(scaleData.length - 1)]
+    scaleData[i] = ~~(255*((fitsData[i] - min)/range))
+    
+grayscale: (scaleData,colorData) ->
+  for i in [0..(scaleData.length-1)]
+    value = scaleData[i]
+    colorData[i] = (255 << 24) | (value << 16) | (value << 8) | value
+```
+
+
