@@ -78,10 +78,10 @@ display.draw()
 ```
 In addition, custom functions can be written and used to scale or color the image.
 ```coffeescript
-myScale = (fitsData, scaleData, fitsMin, fitsMax) ->
+myScaleFunction = (fitsData, scaleData, fitsMin, fitsMax) ->
   #Use own scaling method here
   
-display.scale = myScale
+display.scale = myScaleFunction
 ```
 The fitsData parameter is the data from the fits file.  The scaleData parameter is the array being written to, 
 and is a Uint8ClampedArray in order to insure values bewteen 0 and 255.  The fitsMin parameter is the 
@@ -89,10 +89,10 @@ mininum value in the fitsData array, and the fitsMax parameter is the maxinum va
 
 Similary with color:
 ```coffeescript
-myColor = (scaleData, colorData) ->
+myColorFunction = (scaleData, colorData) ->
   #Use own color method here
 
-display.color = myColor
+display.color = myColorFunction
 ```
 The scaleData is the data returned by the scaling method and is a Uint8ClampedArray with values from 0 to 255.
 The colorData is a Uint32Array where each RGBA pixel (8 bits each value) is represented in each array index.
