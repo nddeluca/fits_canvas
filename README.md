@@ -40,6 +40,9 @@ display.draw()
 The default scaling of the image is linear, and the default color is grayscale.
 The height is set by using the intial width to keep the same aspect ratio.
 
+Also, note the canvas does not have to be the same size has the fit image.
+The fits image will be scaled down or up to fit the canvas.
+
 Example of this usage:
 ```coffeescript
 FitsCanvas = require('fits_canvas')
