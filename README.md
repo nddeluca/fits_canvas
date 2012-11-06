@@ -80,11 +80,16 @@ grayscale: (scaleData,colorData) ->
     colorData[i] = (255 << 24) | (value << 16) | (value << 8) | value
 ```
 
-To DO
+To Do
 ---
-*Add class to display galaxy models
-*Add class to display residuals
-*Write tests and benchmark
-*Add processor endainness check (the grayscale algorithm currently only works on little-endian machines)
+* Add class to display galaxy models
+* Add class to display residuals
+* Write tests and benchmark
+* Add processor endainness check (the grayscale algorithm currently only works on little-endian machines)
 
+References
+---
+https://github.com/astrojs/fitsjs  
+https://hacks.mozilla.org/2011/12/faster-canvas-pixel-manipulation-with-typed-arrays/  
+http://tech-algorithm.com/articles/nearest-neighbor-image-scaling/  
 
