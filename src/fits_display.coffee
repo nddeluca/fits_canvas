@@ -64,7 +64,7 @@ class FitsDisplay extends Display
     for x in [0..(@width-1)]
       x_orig = ~~(x*@scaleRatio)
       for y in [0..(@height-1)]
-        @displayView32[(@width*y)+x] = @colorView32[(inverCoeff-(~~(y*yScaleCoeff))) + x_orig]
+        @displayView32[(@width*y)+x] = @colorView32[(invertCoeff-(~~(y*yScaleCoeff))) + x_orig]
     return
 
 module?.exports = FitsDisplay
