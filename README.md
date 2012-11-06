@@ -53,9 +53,12 @@ xhr.responseType = 'arraybuffer'
 xhr.send()
 
 xhr.onload = (e) ->
-  display = new FitsCanvas.FitsDisplay('my-canvas-containter',500,xhr.response)
+  display = new FitsCanvas.FitsDisplay('my-canvas-container',500,xhr.response)
   display.processImage()
   display.draw()
+```
+```html
+<div id="my-canvas-container"></div>
 ```
 
 Advanced Usage
