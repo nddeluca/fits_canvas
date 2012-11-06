@@ -59,12 +59,11 @@ class FitsDisplay extends Display
     @colorer.process(@scaleView8,@colorView32)
 
     invertCoeff = (@fitsHeight - 1)*@fitsWidth
-    yScaleCoeff = @scaleRatio*@fitsWidth
 
     for x in [0..(@width-1)]
-      x_orig = ~~(x*@scaleRatio)
+      coeff = ~~(x*@scaleRatio) + invertCoeff
       for y in [0..(@height-1)]
-        @displayView32[(@width*y)+x] = @colorView32[(invertCoeff-(~~(y*yScaleCoeff))) + x_orig]
+        @displayView32[(@width*y)+x] = @colorView32[coeff - (~~(y*@scaleRatio))*@fitsWidth]
     return
-
+    
 module?.exports = FitsDisplay
