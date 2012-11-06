@@ -43,7 +43,7 @@ class FitsDisplay extends Display
     @colorView32 = new Uint32Array(@colorBuffer)
   
   processImage: ->
-    scaler = new ScaleProcessor Scales.linear
+    scaler = new ScaleProcessor(Scales.linear)
     scaler.process(@fitsData,@scaleView8,@fitsMin,@fitsMax,@fitsWidth,@fitsHeight)
     console.log @scaleView8
 
