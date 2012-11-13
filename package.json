@@ -5,7 +5,7 @@
   "description": "Project to handle processing of fits data for viewing on html5 canvas",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nddeluca/fits_data_processor"
+    "url": "https://github.com/nddeluca/fits_canvas"
    },
    "dependencies": {
    }

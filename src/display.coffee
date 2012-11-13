@@ -40,14 +40,14 @@ class Display extends Canvas
   buildScaleBuffers: ->
     @scaleBuffer = new ArrayBuffer(@imageWidth*@imageHeight)
     @scaleView8 = new Uint8ClampedArray(@scaleBuffer)
-    return
+    undefined
 
   #Holds RGBA Array
   buildColorBuffers: ->
     @colorBuffer = new ArrayBuffer(@imageWidth*@imageHeight*4)
     @colorView8 = new Uint8ClampedArray(@colorBuffer)
     @colorView32 = new Uint32Array(@colorBuffer)
-    return
+    undefined
   
   processImage: ->
     @scaler.process(@imageData,@scaleView8)
@@ -59,6 +59,6 @@ class Display extends Canvas
       coeff = ~~(x*@scaleRatio) + invertCoeff
       for y in [0..(@canvasHeight-1)]
         @canvasView32[(@canvasWidth*y)+x] = @colorView32[coeff - (~~(y*@scaleRatio))*@imageWidth]
-    return
+    undefined
     
 module?.exports = Display

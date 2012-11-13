@@ -8,6 +8,6 @@ scales =
     index = 0
     for i in [0..(scaleData.length - 1)]
       scaleData[i] = ~~(255*((imageData[i] - min)/range))
-    return
+    undefined
 
 module?.exports = scales

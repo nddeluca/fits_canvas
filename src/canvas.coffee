@@ -13,11 +13,11 @@ class Canvas
     @canvasBuffer = new ArrayBuffer(@canvasData.data.length)
     @canvasView8 = new Uint8ClampedArray(@canvasBuffer)
     @canvasView32 = new Uint32Array(@canvasBuffer)
-    return
+    undefined
 
   draw: ->
     @canvasData.data.set(@canvasView8)
     @context.putImageData(@canvasData,0,0)
-    return
+    undefined
 
 module?.exports = Canvas
