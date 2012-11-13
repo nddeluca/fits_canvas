@@ -58,7 +58,7 @@ class Display extends Canvas
     for x in [0..(@canvasWidth-1)]
       coeff = ~~(x*@scaleRatio) + invertCoeff
       for y in [0..(@canvasHeight-1)]
-        @displayView32[(@canvasWidth*y)+x] = @colorView32[coeff - (~~(y*@scaleRatio))*@imageWidth]
+        @canvasView32[(@canvasWidth*y)+x] = @colorView32[coeff - (~~(y*@scaleRatio))*@imageWidth]
     return
     
 module?.exports = Display
