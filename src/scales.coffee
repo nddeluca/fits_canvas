@@ -1,13 +1,13 @@
 utils = require('./utils')
 
 scales =
-  linear: (fitsData, scaleData) ->
-    min = utils.min(fitsData)
-    max = utils.max(fitsData)
+  linear: (imageData, scaleData) ->
+    min = utils.min(imageData)
+    max = utils.max(imageData)
     range = max - min
     index = 0
     for i in [0..(scaleData.length - 1)]
-      scaleData[i] = ~~(255*((fitsData[i] - min)/range))
+      scaleData[i] = ~~(255*((imageData[i] - min)/range))
     return
 
 module?.exports = scales

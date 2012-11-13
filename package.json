@@ -8,6 +8,5 @@
     "url": "https://github.com/nddeluca/fits_data_processor"
    },
    "dependencies": {
-     "fitsjs": "git://github.com/astrojs/fitsjs.git"
    }
 }
