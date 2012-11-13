@@ -1,10 +1,12 @@
 FitsCanvas
 ===================
 
-Library to display fits files in the browser using astrojs/fitsjs and html5 canvas.
+Library to display fits files and other images in the browser using an html5 canvas.
 
 Install
 ---
+Assuming your using a spinejs or hem application:
+
 Add to package.json
 ```coffeescript
 "dependencies": {
@@ -24,12 +26,12 @@ npm install
 
 Simple Usage
 ---
-To display a fits file create a new FitsDisplay Object.  FitsDisplay takes a container id, width, and binary fits file.
+To display a fits file create a new Display Object.  The Display class takes a container id, width, and an image.
 The conainter id is the css id of the containing div element where the canvas will be created.
 The width is the width of the canvas the fits image is displayed on (also the width of the image).
-And the fits_file is an arraybuffer of a binary fits file.
+The image is any object with data, width, and height attributes.
 ```coffeescript
-display = new FitsCanvas.FitsDisplay(container_id, width, fits_file)
+display = new FitsCanvas.Display(container_id, width, image)
 ```
 Once a FitsDisplay is created, call processImage() to build the fits image.
 Then call draw() to draw the image to the canvas.
@@ -43,9 +45,11 @@ The height is set by using the intial width to keep the same aspect ratio.
 Note: The canvas does not have to be the same size as the fit file image.
 The fits image will be scaled down or up to fit the canvas when drawn.
 
+Use
 Example of this usage:
 ```coffeescript
 FitsCanvas = require('fits_canvas')
+FITS = require('fits')
 
 xhr = new XMLHttpRequest()
 xhr.open('GET', 'images/my_fits_file.fits')
@@ -53,7 +57,12 @@ xhr.responseType = 'arraybuffer'
 xhr.send()
 
 xhr.onload = (e) ->
-  display = new FitsCanvas.FitsDisplay('my-canvas-container',500,xhr.response)
+  #Use atrojs/fitsjs to get fits image from binary file
+  fitsFile = new FITS.file(xhr.response)
+  image = fitsFile.getDataUnit()
+  image.getFrame()
+  
+  display = new FitsCanvas.Display('my-canvas-container',500,image)
   display.processImage()
   display.draw()
 ```
@@ -70,7 +79,7 @@ Though, as more methods are written they can be set by setting the scale and col
 before calling processImage(). For example, the following code would use a log scale 
 and heat color to show the fits image.
 ```coffeescript
-display = new FitsCanvas.FitsDisplay('my-container',500,fits_array_buffer)
+display = new FitsCanvas.Display('my-container',500,image)
 display.scale = FitCanvas.scales.log #Not availiable yet
 display.color = FitCanvas.colors.heat #Not availiable yet
 display.processImage()
@@ -78,14 +87,14 @@ display.draw()
 ```
 In addition, custom functions can be written and used to scale or color the image.
 ```coffeescript
-myScaleFunction = (fitsData, scaleData, fitsMin, fitsMax) ->
+myScaleFunction = (imageData, scaleData) ->
   #Use own scaling method here
   
 display.scale = myScaleFunction
 ```
-The fitsData parameter is the data from the fits file.  The scaleData parameter is the array being written to, 
+The imageData parameter is the data from the fits image.  The scaleData parameter is the array being written to, 
 and is a Uint8ClampedArray in order to insure values bewteen 0 and 255.  The fitsMin parameter is the 
-mininum value in the fitsData array, and the fitsMax parameter is the maxinum value in the fitsData array.
+mininum value in the imageData array, and the fitsMax parameter is the maxinum value in the fitsData array.
 
 Similary with color:
 ```coffeescript
@@ -100,10 +109,12 @@ The colorData is a Uint32Array where each RGBA pixel (8 bits each value) is repr
 To get an idea of the usage, here is the linear and grayscale functions that are used by default.
 ```coffeescript
 scales = 
-  linear: (fitsData, scaleData, min, max) ->
+  linear: (imageData, scaleData) ->
+    min = utils.min(imageData)
+    max = utils.max(imageData)
     range = max - min
     for i in [0..(scaleData.length - 1)]
-      scaleData[i] = ~~(255*((fitsData[i] - min)/range))
+      scaleData[i] = ~~(255*((imageData[i] - min)/range))
     return
 
 colors =
@@ -117,8 +128,6 @@ Note: It's important that these functions end with return.  Ended with a loop wi
 
 To Do
 ---
-* Add class to display galaxy models
-* Add class to display residuals
 * Write tests and benchmark
 * Add processor endainness check (the grayscale algorithm currently only works on little-endian machines)
 
