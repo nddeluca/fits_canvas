@@ -55,7 +55,7 @@ class FitsDisplay extends Display
     return
   
   processImage: ->
-    @scaler.process(@fitsData,@scaleView8,@fitsMin,@fitsMax)
+    @scaler.process(@fitsData,@scaleView8)
     @colorer.process(@scaleView8,@colorView32)
 
     invertCoeff = (@fitsHeight - 1)*@fitsWidth

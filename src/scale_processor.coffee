@@ -1,5 +1,5 @@
 ScaleProcessor = (algorithm) ->
-  process: (fitsData, scaleData, min, max) ->
-    algorithm(fitsData, scaleData, min, max)
+  process: (fitsData, scaleData) ->
+    algorithm(fitsData, scaleData)
 
 module?.exports = ScaleProcessor

@@ -1,5 +1,9 @@
+utils = require('./utils')
+
 scales =
-  linear: (fitsData, scaleData, min, max) ->
+  linear: (fitsData, scaleData) ->
+    min = utils.min(fitsData)
+    max = utils.max(fitsData)
     range = max - min
     index = 0
     for i in [0..(scaleData.length - 1)]
