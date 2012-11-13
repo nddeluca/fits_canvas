@@ -10,9 +10,9 @@ class Canvas
     
   buildImageBuffers: ->
     @canvasData = @context.createImageData(@canvasWidth,@canvasHeight)
-    @canvasBuffer = new ArrayBuffer(@displayData.data.length)
-    @canvasView8 = new Uint8ClampedArray(@displayBuffer)
-    @canvasView32 = new Uint32Array(@displayBuffer)
+    @canvasBuffer = new ArrayBuffer(@canvasData.data.length)
+    @canvasView8 = new Uint8ClampedArray(@canvasBuffer)
+    @canvasView32 = new Uint32Array(@canvasBuffer)
     return
 
   draw: ->
