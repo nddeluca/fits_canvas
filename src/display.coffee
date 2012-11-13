@@ -61,4 +61,4 @@ class Display extends Canvas
         @displayView32[(@canvasWidth*y)+x] = @colorView32[coeff - (~~(y*@scaleRatio))*@imageWidth]
     return
     
-module?.exports = FitsDisplay
+module?.exports = Display
